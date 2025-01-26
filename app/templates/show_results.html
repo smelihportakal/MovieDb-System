@@ -1,0 +1,187 @@
+<head>
+    <title> Show Table Results</title>
+</head>
+
+<body>
+    {% if directors or ratings or director_movies %}
+        <a href="{{ url_for('dbmanager') }}">Return</a>
+    {% endif %}
+    {% if theatres or movies_directed or audiences %}
+        <a href="{{ url_for('get_director') }}">Return</a>
+    {% endif %}
+    {% if movies or tickets %}
+        <a href="{{ url_for('get_audience') }}">Return</a>
+    {% endif %}
+
+
+    <h1> Show Table Results</h1>
+
+    {% if directors %}
+    <h2> All Directors</h2>
+    <table>
+        <tr>
+            <th>username</th>
+            <th>name</th>
+            <th>surname</th>
+            <th>nation</th>
+            <th>platform_id</th>
+        </tr>
+        {% for director in directors %}
+        <tr>
+            <td>{{ director[0] }}</td>
+            <td>{{director[1]}}</td>
+            <td>{{director[2]}}</td>
+            <td>{{director[3]}}</td>
+            <td>{{director[4]}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+    {% if ratings %}
+    <h2>All Ratings of Audience</h2>
+    <table>
+        <tr>
+            <th>Movie ID</th>
+            <th>Movie Name</th>
+            <th>Rating</th>
+        </tr>
+        {% for movie in ratings %}
+        <tr>
+            <td>{{ movie[0] }}</td>
+            <td>{{ movie[1] }}</td>
+            <td>{{ movie[2] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+    {% if director_movies %}
+    <h2>All Movies of Director</h2>
+    <table>
+        <tr>
+            <th>Movie ID</th>
+            <th>Movie Name</th>
+            <th>Theatre ID</th>
+            <th>District</th>
+            <th>Time Slot</th>
+        </tr>
+        {% for movie in director_movies %}
+        <tr>
+            <td>{{ movie[0] }}</td>
+            <td>{{ movie[1] }}</td>
+            <td>{{ movie[2] }}</td>
+            <td>{{ movie[3] }}</td>
+            <td>{{ movie[4] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+    {% if theatres %}
+    <h2>List of Theatres for Given Slot</h2>
+    <table>
+        <tr>
+            <th>Theatre ID</th>
+            <th>District</th>
+            <th>Theatre Capacity</th>
+        </tr>
+        {% for theatre in theatres %}
+        <tr>
+            <td>{{ theatre[0] }}</td>
+            <td>{{ theatre[1] }}</td>
+            <td>{{ theatre[2] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+    {% if movies_directed %}
+    <h2>List of Movies Directed by Director</h2>
+    <table>
+        <tr>
+            <th>Movie ID</th>
+            <th>Movie Name</th>
+            <th>Theatre ID</th>
+            <th>Time Slot</th>
+            <th>Predecessors List</th>
+        </tr>
+        {% for movie in movies_directed %}
+        <tr>
+            <td>{{ movie[0] }}</td>
+            <td>{{ movie[1] }}</td>
+            <td>{{ movie[2] }}</td>
+            <td>{{ movie[3] }}</td>
+            <td>{{ movie[4] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+    {% if audiences %}
+    <h2>Audiences who Bought Tickets for Movie</h2>
+    <table>
+        <tr>
+            <th>Username</th>
+            <th>Name</th>
+            <th>Surname</th>
+        </tr>
+        {% for audience in audiences %}
+        <tr>
+            <td>{{ audience[0] }}</td>
+            <td>{{ audience[1] }}</td>
+            <td>{{ audience[2] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+
+    {% if movies %}
+    <h2>List of Movies</h2>
+    <table>
+        <tr>
+            <th>Movie ID</th>
+            <th>Movie Name</th>
+            <th>Director's Surname</th>
+            <th>Platform</th>
+            <th>Theatre ID</th>
+            <th>Time Slot</th>
+            <th>Predecessors List</th>
+        </tr>
+        {% for movie in movies %}
+        <tr>
+            <td>{{ movie[0] }}</td>
+            <td>{{ movie[1] }}</td>
+            <td>{{ movie[2] }}</td>
+            <td>{{ movie[3] }}</td>
+            <td>{{ movie[4] }}</td>
+            <td>{{ movie[5] }}</td>
+            <td>{{ movie[6] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+    {% if tickets %}
+    <h2>List of Bought Tickets</h2>
+    <table>
+        <tr>
+            <th>Movie ID</th>
+            <th>Movie Name</th>
+            <th>Session ID</th>
+            <th>Rating</th>
+            <th>Overall Rating</th>
+        </tr>
+        {% for ticket in tickets %}
+        <tr>
+            <td>{{ ticket[0] }}</td>
+            <td>{{ ticket[1] }}</td>
+            <td>{{ ticket[2] }}</td>
+            <td>{{ ticket[3] }}</td>
+            <td>{{ ticket[4] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</body>

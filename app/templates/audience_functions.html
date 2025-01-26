@@ -4,6 +4,14 @@
 <body>
     <h1>Audience Functions</h1>
 
+    <a href="{{ url_for('get_audience') }}">Reload</a>
+
+    {% if message %}
+
+    Message: {{ message }}
+    
+    {% endif %}
+
     <h2>List All Movies</h2>
     <form action="/list_movies" method="get">
         <input type="submit" value="List All Movies">

@@ -4,8 +4,19 @@
 <body>
     <h1>Director Functions</h1>
 
+    <a href="{{ url_for('get_director') }}">Reload</a>
+
+    {% if message %}
+
+    Message: {{ message }}
+    
+    {% endif %}
+
     <h2>List Theatres for a Given Slot</h2>
     <form action="/list_theatres" method="post">
+        <label for="date">Date:</label>
+        <input type="text" id="date" name="date" required><br><br>
+        <small>Date must be in this format yyyy-mm-dd</small><br><br>
         <label for="time_slot">Time Slot:</label>
         <input type="text" id="time_slot" name="time_slot" required><br><br>
         <input type="submit" value="List Theatres">
@@ -17,11 +28,40 @@
         <input type="text" id="movie_id" name="movie_id" required><br><br>
         <label for="movie_name">Movie Name:</label>
         <input type="text" id="movie_name" name="movie_name" required><br><br>
+        <label for="duration">Duration:</label>
+        <input type="text" id="duration" name="duration" required><br><br>
+        <label for="genres">Genre IDs:</label>
+        <input type="text" id="genres" name="genres"><br><br>
+        <small>Separate multiple IDs with commas (e.g., 80001,80002,80003)</small><br><br>
+        <input type="submit" value="Add Movie">
+    </form>
+
+    <h2>Add Movie Session</h2>
+    <form action="/add_movie_session" method="post">
+        <label for="session_id">Session ID:</label>
+        <input type="text" id="session_id" name="session_id" required><br><br>
+        <label for="movie_id">Movie ID:</label>
+        <input type="text" id="movie_id" name="movie_id" required><br><br>
         <label for="theatre_id">Theatre ID:</label>
         <input type="text" id="theatre_id" name="theatre_id" required><br><br>
         <label for="time_slot">Time Slot:</label>
         <input type="text" id="time_slot" name="time_slot" required><br><br>
-        <input type="submit" value="Add Movie">
+        <label for="date">Date:</label>
+        <input type="text" id="date" name="date" required><br><br>
+        <input type="submit" value="Add Movie Session">
+    </form>
+
+    <h2>Add Theatre</h2>
+    <form action="/add_theatre" method="post">
+        <label for="theatre_id">Theatre ID:</label>
+        <input type="text" id="theatre_id" name="theatre_id" required><br><br>
+        <label for="theatre_name">Theatre Name:</label>
+        <input type="text" id="theatre_name" name="theatre_name" required><br><br>
+        <label for="theatre_capacity">Capacity:</label>
+        <input type="text" id="theatre_capacity" name="theatre_capacity" required><br><br>
+        <label for="district">District:</label>
+        <input type="text" id="district" name="district" required><br><br>
+        <input type="submit" value="Add Theatre">
     </form>
 
     <h2>Add Predecessor(s) to a Movie</h2>
@@ -35,7 +75,7 @@
     </form>
 
     <h2>View Movies Directed</h2>
-    <form action="/view_directed_movies" method="post">
+    <form action="/view_directed_movies" method="get">
         <input type="submit" value="View Movies Directed">
     </form>
 
